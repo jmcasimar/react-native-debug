@@ -13,6 +13,7 @@ Execution failed for task ':app:transformDexArchiveWithExternalLibsDexMergerForD
 > com.android.builder.dexing.DexArchiveMergerException: Error while merging dex archives:
   The number of method references in a .dex file cannot exceed 64K.
   Learn how to resolve this issue at https://developer.android.com/tools/building/multidex.html
+
 Debes habilitar multidex siguiendo los pasos del siguiente link https://developer.android.com/studio/build/multidex
 Presta especial atención en la versión de Android para la cual estás trabajando, por lo general Android ^5.0. Si la versión que estás utilizando es mayor a esa lo único que debes hacer es cambiar en tu android/buidle.gradle la siguiente línea:
 minSdkVersion = 21 o cualquier numero mayor a 21
@@ -24,3 +25,14 @@ minSdkVersion = 21 o cualquier numero mayor a 21
 5- El componente createDrawerNavigator fue movido de react-navigation a react-navigation-drawer para resolver el error es necesario "npm install -i react-navigation-drawer", cambiar la línea donde se importa el componente en el archivo src/navigator.js
 
 5- Además fue necesario instalar "npm install -i react-native-reanimated", "npm install -i react-native-screens" y "npm install --s @react-native-community/masked-view"
+Para más información siga los pasos descritos en este link: https://reactnavigation.org/docs/en/getting-started.html
+Si tiene problema para ligar react-native-screens puede apoyarse en estos links https://www.npmjs.com/package/react-native-screens
+Si tiene problemas con appcompat lea este link https://stackoverflow.com/questions/57125966/could-not-find-androidx-appcompatappcompat1-0-2
+
+6- Si el sideMenu no funciona es necesario que lea la información en este link para resolverlo
+https://github.com/react-navigation/drawer/issues/105
+>import {AppRegistry} from 'react-native';
+import App from './App';
+import {name as appName} from './app.json';
+import { gestureHandlerRootHOC } from 'react-native-gesture-handler'
+AppRegistry.registerComponent(appName, () => gestureHandlerRootHOC(App));
